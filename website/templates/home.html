@@ -3,8 +3,28 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-
-<h1> Hello niggas </h1>
+<div class="col-md-6 offset-md-3">
+	<h1>Record List</h1>
+	<table class="table table-hover table-bordered">
+		<thead class="table-dark">
+			<th scope="col">ID</th>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+		</thead>
+		<tbody>
+			{% if records %}
+				{% for record in records %}
+					<tr>
+						<td>{{ record.id }}</td>
+						<td> <a href="{% url 'record' record.id %}">{{ record }}</a></td>
+						<td>{{ record.email }}</td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+		</tbody>
+	</table>
+	<a href="{% url 'add_record' %}" class="btn btn-secondary">+ Add</a>
+</div>
 
 {% else %}
 

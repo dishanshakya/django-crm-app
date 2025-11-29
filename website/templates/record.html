@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Customer Record</h1>
+
+{% if record %}
+<table class="table table-hover table-bordered">
+	<tbody>
+		<tr>
+			<th>Name</th>
+			<td>{{ record }}</td>
+		</tr>
+		<tr>
+			<th>ID</th>
+			<td>{{ record.id }}</td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td>{{ record.email }}</td>
+		</tr>
+		<tr>
+			<th>Created At</th>
+			<td>{{ record.date }}</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+<a href="{% url 'update_record' record.id %}" class="btn btn-secondary">Update</a>
+<a href="{% url 'delete_record' record.id %}" class="btn btn-danger">Delete</a>
+
+{% endif %}
+
+{% endblock %}
